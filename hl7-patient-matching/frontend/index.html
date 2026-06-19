@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HL7 Patient Matching Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏥 HL7 Patient Matching System</h1>
+            <p class="subtitle">AI-Powered Patient Record Linkage for Hospital Admissions</p>
+        </header>
+
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-value" id="activePatients">0</div>
+                <div class="stat-label">Active Patients</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="mergedPatients">0</div>
+                <div class="stat-label">Merged Patients</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="pendingMatches">0</div>
+                <div class="stat-label">Pending Matches</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalAdmissions">0</div>
+                <div class="stat-label">Total Admissions</div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <div class="action-card">
+                <h3>📤 Upload HL7 File</h3>
+                <p>Upload an HL7 ADT file containing patient admission records</p>
+                <input type="file" id="hl7FileInput" accept=".hl7,.txt">
+                <button onclick="uploadHL7File()" class="btn btn-primary">Upload & Process</button>
+            </div>
+
+            <div class="action-card">
+                <h3>🔍 Run Matching</h3>
+                <p>Execute patient matching algorithms to find duplicates</p>
+                <label>
+                    Confidence Threshold:
+                    <input type="range" id="thresholdSlider" min="0.5" max="1.0" step="0.05" value="0.75">
+                    <span id="thresholdValue">0.75</span>
+                </label>
+                <button onclick="runMatching()" class="btn btn-success">Run Matching Algorithm</button>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <h2>🎯 Matching Results</h2>
+            <div id="loadingIndicator" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Processing...</p>
+            </div>
+            <div id="resultsContainer"></div>
+        </div>
+
+        <div class="patients-section">
+            <h2>👥 Patient Records</h2>
+            <button onclick="loadPatients()" class="btn btn-secondary">Refresh Patient List</button>
+            <div id="patientsContainer"></div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Patient Details</h2>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

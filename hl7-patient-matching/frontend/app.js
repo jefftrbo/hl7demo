@@ -422,9 +422,9 @@ function parseHL7ToReadable(hl7Message) {
                 <tr><td class="hl7-label">Insurance Plan ID:</td><td>${fields[2] || ''}</td></tr>
                 <tr><td class="hl7-label">Insurance Company ID:</td><td>${fields[3] || ''}</td></tr>
                 <tr><td class="hl7-label">Insurance Company Name:</td><td>${fields[4] || ''}</td></tr>
-                <tr><td class="hl7-label">Group Number:</td><td>${fields[8] || ''}</td></tr>
-                <tr><td class="hl7-label">Plan Type:</td><td>${fields[15] || ''}</td></tr>
-                <tr><td class="hl7-label">Policy Number:</td><td>${fields[36] || ''}</td></tr>
+                <tr><td class="hl7-label">Group Number:</td><td>${fields[10] || ''}</td></tr>
+                <tr><td class="hl7-label">Plan Type:</td><td>${fields[17] || ''}</td></tr>
+                <tr><td class="hl7-label">Policy Number:</td><td>${fields[fields.length - 1] || ''}</td></tr>
             `;
         } else if (segmentType === 'DG1') {
             const diagnosisParts = fields[3]?.split('^') || [];

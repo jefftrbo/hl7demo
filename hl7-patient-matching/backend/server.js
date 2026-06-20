@@ -75,11 +75,21 @@ function parseHL7Message(message) {
 
     if (segmentType === 'IN1') {
       // Parse insurance information from IN1 segment
+      // Correct field positions based on actual HL7 structure:
+      // IN1|1|CarrierID|CarrierID|CarrierName||||||GroupNum||||EffDate|||PlanType|PatientName||...||||||||||||||||PolicyNum
       patient.insurance_carrier_id = fields[3] || '';
       patient.insurance_carrier_name = fields[4] || '';
-      patient.insurance_plan_type = fields[15] || '';
-      patient.insurance_policy_number = fields[36] || '';
-      patient.insurance_group_number = fields[8] || '';
+      patient.insurance_group_number = fields[10] || '';  // Field 10: Group Number
+      patient.insurance_plan_type = fields[17] || '';     // Field 17: Plan Type (CORRECTED!)
+      patient.insurance_policy_number = fields[fields.length - 1] || ''; // Last field: Policy Number
+      
+      // Debug logging
+      console.log('🔍 IN1 Segment Parsed:');
+      console.log('  Carrier:', patient.insurance_carrier_name);
+      console.log('  Group Number (field 10):', fields[10]);
+      console.log('  Plan Type (field 17):', fields[17]);
+      console.log('  Policy Number (last field):', fields[fields.length - 1]);
+      console.log('  Total fields in IN1:', fields.length);
     }
 
     if (segmentType === 'DG1') {

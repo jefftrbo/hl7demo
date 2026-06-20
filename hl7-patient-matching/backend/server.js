@@ -418,6 +418,46 @@ app.get('/api/patients/:patientId/hl7', async (req, res) => {
   }
 });
 
+// Get merged patients
+app.get('/api/merged-patients', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT
+        p.id,
+        p.mrn,
+        p.first_name,
+        p.middle_name,
+        p.last_name,
+        p.dob,
+        p.sex,
+        p.ssn,
+        p.phone,
+        p.street_address,
+        p.city,
+        p.state,
+        p.zip,
+        p.insurance_carrier_name,
+        p.insurance_plan_type,
+        p.insurance_policy_number,
+        p.insurance_group_number,
+        p.updated_at as merged_at,
+        pm.patient1_id as merged_into_id,
+        p2.mrn as merged_into_mrn,
+        p2.first_name || ' ' || p2.last_name as merged_into_name
+      FROM patients p
+      LEFT JOIN patient_matches pm ON p.id = pm.patient2_id AND pm.status = 'MERGED'
+      LEFT JOIN patients p2 ON pm.patient1_id = p2.id
+      WHERE p.status = 'MERGED'
+      ORDER BY p.updated_at DESC
+    `);
+    
+    res.json({ mergedPatients: result.rows });
+  } catch (error) {
+    console.error('Error fetching merged patients:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Statistics
 app.get('/api/stats', async (req, res) => {
   try {

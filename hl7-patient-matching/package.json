@@ -1,6 +1,6 @@
 {
   "name": "hl7-patient-matching",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "AI-Powered Patient Record Linkage System for HL7 ADT Messages",
   "main": "backend/server.js",
   "scripts": {

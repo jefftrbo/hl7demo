@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>🏥 HL7 Patient Matching System</h1>
+            <h1>🏥 HL7 Patient Matching System <span class="version">v1.2.0</span></h1>
             <p class="subtitle">AI-Powered Patient Record Linkage for Hospital Admissions</p>
         </header>
 
@@ -18,7 +18,7 @@
                 <div class="stat-value" id="activePatients">0</div>
                 <div class="stat-label">Active Patients</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card clickable" onclick="showMergedPatientsModal()">
                 <div class="stat-value" id="mergedPatients">0</div>
                 <div class="stat-label">Merged Patients</div>
             </div>
@@ -73,6 +73,14 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <h2>Patient Details</h2>
             <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <div id="mergedPatientsModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closeMergedPatientsModal()">&times;</span>
+            <h2>📋 Merged Patient Records</h2>
+            <div id="mergedPatientsBody"></div>
         </div>
     </div>
 

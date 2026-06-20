@@ -498,10 +498,124 @@ function closeModal() {
     document.getElementById('modal').style.display = 'none';
 }
 
+function closeMergedPatientsModal() {
+    document.getElementById('mergedPatientsModal').style.display = 'none';
+}
+
+// Show merged patients modal
+async function showMergedPatientsModal() {
+    try {
+        const response = await fetch(`${API_BASE}/merged-patients`);
+        const data = await response.json();
+        
+        const modal = document.getElementById('mergedPatientsModal');
+        const modalBody = document.getElementById('mergedPatientsBody');
+        
+        if (data.mergedPatients.length === 0) {
+            modalBody.innerHTML = '<p class="alert alert-info">No merged patients found.</p>';
+        } else {
+            let html = '<div class="merged-patients-list">';
+            
+            data.mergedPatients.forEach(patient => {
+                const mergedDate = new Date(patient.merged_at).toLocaleDateString();
+                html += `
+                    <div class="merged-patient-card">
+                        <div class="merged-patient-header">
+                            <h3>🔗 ${patient.first_name} ${patient.middle_name || ''} ${patient.last_name}</h3>
+                            <span class="merged-badge">Merged on ${mergedDate}</span>
+                        </div>
+                        <div class="merged-patient-details">
+                            <div class="detail-section">
+                                <h4>📋 Patient Information</h4>
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <span class="detail-label">MRN:</span>
+                                        <span class="detail-value">${patient.mrn}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Date of Birth:</span>
+                                        <span class="detail-value">${patient.dob}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Sex:</span>
+                                        <span class="detail-value">${patient.sex}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">SSN:</span>
+                                        <span class="detail-value">${patient.ssn || 'N/A'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-section">
+                                <h4>📞 Contact Information</h4>
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <span class="detail-label">Phone:</span>
+                                        <span class="detail-value">${patient.phone || 'N/A'}</span>
+                                    </div>
+                                    <div class="detail-item full-width">
+                                        <span class="detail-label">Address:</span>
+                                        <span class="detail-value">${patient.street_address || 'N/A'}, ${patient.city || ''}, ${patient.state || ''} ${patient.zip || ''}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-section">
+                                <h4>🏥 Insurance Information</h4>
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <span class="detail-label">Carrier:</span>
+                                        <span class="detail-value">${patient.insurance_carrier_name || 'N/A'}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Plan Type:</span>
+                                        <span class="detail-value">${patient.insurance_plan_type || 'N/A'}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Policy Number:</span>
+                                        <span class="detail-value">${patient.insurance_policy_number || 'N/A'}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Group Number:</span>
+                                        <span class="detail-value">${patient.insurance_group_number || 'N/A'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            ${patient.merged_into_mrn ? `
+                            <div class="detail-section merged-into-section">
+                                <h4>➡️ Merged Into</h4>
+                                <div class="merged-into-info">
+                                    <p><strong>Master Record:</strong> ${patient.merged_into_name}</p>
+                                    <p><strong>MRN:</strong> ${patient.merged_into_mrn}</p>
+                                </div>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            modalBody.innerHTML = html;
+        }
+        
+        modal.style.display = 'block';
+    } catch (error) {
+        console.error('Error fetching merged patients:', error);
+        showAlert('Error fetching merged patients: ' + error.message, 'error');
+    }
+}
+
 window.onclick = function(event) {
     const modal = document.getElementById('modal');
+    const mergedModal = document.getElementById('mergedPatientsModal');
     if (event.target === modal) {
         modal.style.display = 'none';
+    }
+    if (event.target === mergedModal) {
+        mergedModal.style.display = 'none';
     }
 }
 

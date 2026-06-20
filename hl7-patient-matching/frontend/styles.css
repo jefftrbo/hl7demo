@@ -31,6 +31,20 @@ h1 {
     color: #2d3748;
     font-size: 2.5em;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.version {
+    font-size: 0.4em;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: normal;
+    letter-spacing: 1px;
 }
 
 .subtitle {
@@ -622,3 +636,137 @@ h2 {
 }
 
 /* Made with Bob */
+
+/* Clickable stat card */
+.stat-card.clickable {
+    cursor: pointer;
+}
+
+.stat-card.clickable:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* Modal large size */
+.modal-large {
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Merged patients list */
+.merged-patients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.merged-patient-card {
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.merged-patient-card:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.merged-patient-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.merged-patient-header h3 {
+    color: #2d3748;
+    margin: 0;
+    font-size: 1.3em;
+}
+
+.merged-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.merged-patient-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detail-section {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.detail-section h4 {
+    color: #2d3748;
+    margin: 0 0 15px 0;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detail-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.detail-label {
+    font-size: 0.85em;
+    color: #718096;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    color: #2d3748;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.merged-into-section {
+    background: linear-gradient(135deg, #e6f7ff 0%, #f0e6ff 100%);
+    border: 2px solid #667eea;
+}
+
+.merged-into-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.merged-into-info p {
+    margin: 0;
+    color: #2d3748;
+    font-size: 0.95em;
+}
+
+.merged-into-info strong {
+    color: #667eea;
+}

@@ -4,7 +4,7 @@ Standalone validation artifact for business review.
 
 ## Scope
 
-- Source FHIR file: `data/hospital-admissions.fhir.json`
+- Source FHIR file: `../data/hospital-admissions.fhir.json`
 - Database schema: `fhir_demo`
 - Database container: `hl7-postgres`
 - Bundle id: `47e7fc2b-163e-4316-a1c7-0258d5d953e1`

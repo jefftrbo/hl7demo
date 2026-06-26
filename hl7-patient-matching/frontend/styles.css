@@ -1,3 +1,17 @@
+/* UPMC Brand Colors */
+:root {
+    --upmc-disco: #771B61;
+    --upmc-white: #FFFFFF;
+    --upmc-emperor: #505050;
+    --upmc-disco-light: #8B2570;
+    --upmc-disco-dark: #5F1550;
+    --upmc-emperor-light: #707070;
+    --gradient-primary: linear-gradient(135deg, #771B61 0%, #505050 100%);
+    --gradient-card: linear-gradient(135deg, #771B61 0%, #8B2570 100%);
+    --shadow-disco: 0 4px 15px rgba(119, 27, 97, 0.4);
+    --shadow-disco-hover: 0 8px 25px rgba(119, 27, 97, 0.6);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +20,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     min-height: 100vh;
     padding: 20px;
 }
@@ -24,11 +38,11 @@ header {
     text-align: center;
     margin-bottom: 40px;
     padding-bottom: 20px;
-    border-bottom: 3px solid #667eea;
+    border-bottom: 3px solid var(--upmc-disco-dark);
 }
 
 h1 {
-    color: #2d3748;
+    color: var(--upmc-emperor);
     font-size: 2.5em;
     margin-bottom: 10px;
     display: flex;
@@ -39,8 +53,9 @@ h1 {
 
 .version {
     font-size: 0.4em;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: var(--upmc-white);
+    color: var(--upmc-disco-dark);
+    border: 2px solid var(--upmc-disco-dark);
     padding: 5px 15px;
     border-radius: 20px;
     font-weight: normal;
@@ -48,7 +63,7 @@ h1 {
 }
 
 .subtitle {
-    color: #718096;
+    color: var(--upmc-emperor-light);
     font-size: 1.1em;
 }
 
@@ -60,17 +75,18 @@ h1 {
 }
 
 .stat-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-card);
     color: white;
     padding: 30px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-disco);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stat-card:hover {
     transform: translateY(-5px);
+    box-shadow: var(--shadow-disco-hover);
 }
 
 .stat-value {
@@ -97,16 +113,17 @@ h1 {
     background: #f7fafc;
     padding: 30px;
     border-radius: 15px;
-    border: 2px solid #e2e8f0;
+    border: 2px solid var(--upmc-disco-dark);
+    border-left: 5px solid var(--upmc-disco-dark);
 }
 
 .action-card h3 {
-    color: #2d3748;
+    color: var(--upmc-disco-dark);
     margin-bottom: 10px;
 }
 
 .action-card p {
-    color: #718096;
+    color: var(--upmc-emperor);
     margin-bottom: 20px;
 }
 
@@ -127,7 +144,7 @@ input[type="range"] {
 
 label {
     display: block;
-    color: #4a5568;
+    color: var(--upmc-emperor);
     margin-bottom: 15px;
     font-weight: 500;
 }
@@ -144,50 +161,53 @@ label {
 }
 
 .btn-primary {
-    background: #667eea;
+    background: var(--gradient-card);
     color: white;
+    border: none;
 }
 
 .btn-primary:hover {
-    background: #5568d3;
+    background: linear-gradient(135deg, var(--upmc-disco-light) 0%, #9B3580 100%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: var(--shadow-disco);
 }
 
 .btn-success {
-    background: #48bb78;
+    background: var(--upmc-disco-dark);
     color: white;
 }
 
 .btn-success:hover {
-    background: #38a169;
+    background: var(--upmc-disco-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+    box-shadow: var(--shadow-disco);
 }
 
 .btn-secondary {
-    background: #718096;
-    color: white;
+    background: var(--upmc-white);
+    color: var(--upmc-disco-dark);
+    border: 2px solid var(--upmc-disco-dark);
     margin-bottom: 20px;
 }
 
 .btn-secondary:hover {
-    background: #4a5568;
+    background: var(--upmc-disco-dark);
+    color: var(--upmc-white);
 }
 
 .btn-danger {
-    background: #f56565;
+    background: var(--upmc-disco-dark);
     color: white;
     padding: 8px 16px;
     font-size: 0.9em;
 }
 
 .btn-danger:hover {
-    background: #e53e3e;
+    background: #4A0F3D;
 }
 
 .btn-approve {
-    background: #48bb78;
+    background: var(--upmc-disco-dark);
     color: white;
     padding: 8px 16px;
     font-size: 0.9em;
@@ -195,7 +215,7 @@ label {
 }
 
 .btn-approve:hover {
-    background: #38a169;
+    background: var(--upmc-disco-light);
 }
 
 .results-section, .patients-section {
@@ -203,7 +223,7 @@ label {
 }
 
 h2 {
-    color: #2d3748;
+    color: var(--upmc-emperor);
     margin-bottom: 20px;
     font-size: 1.8em;
 }
@@ -211,6 +231,7 @@ h2 {
 .match-card {
     background: white;
     border: 2px solid #e2e8f0;
+    border-left: 4px solid var(--upmc-disco-dark);
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 20px;
@@ -218,8 +239,8 @@ h2 {
 }
 
 .match-card:hover {
-    border-color: #667eea;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    border-color: var(--upmc-disco-dark);
+    box-shadow: 0 4px 12px rgba(119, 27, 97, 0.2);
 }
 
 .match-header {
@@ -237,18 +258,18 @@ h2 {
 }
 
 .confidence-high {
-    background: #c6f6d5;
-    color: #22543d;
+    background: var(--upmc-disco-dark);
+    color: white;
 }
 
 .confidence-medium {
-    background: #feebc8;
-    color: #7c2d12;
+    background: var(--upmc-emperor);
+    color: white;
 }
 
 .confidence-low {
-    background: #fed7d7;
-    color: #742a2a;
+    background: var(--upmc-emperor-light);
+    color: white;
 }
 
 .patient-comparison {
@@ -265,12 +286,12 @@ h2 {
 }
 
 .patient-info h4 {
-    color: #2d3748;
+    color: var(--upmc-emperor);
     margin-bottom: 10px;
 }
 
 .patient-info p {
-    color: #4a5568;
+    color: var(--upmc-emperor);
     margin: 5px 0;
     font-size: 0.9em;
 }
@@ -285,11 +306,12 @@ h2 {
 }
 
 .reasoning {
-    background: #edf2f7;
+    background: #FFF5FB;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
-    color: #2d3748;
+    border-left: 3px solid var(--upmc-disco-dark);
+    color: var(--upmc-emperor);
     font-style: italic;
 }
 
@@ -305,7 +327,7 @@ h2 {
 
 .spinner {
     border: 4px solid #f3f3f3;
-    border-top: 4px solid #667eea;
+    border-top: 4px solid var(--upmc-disco-dark);
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -325,7 +347,7 @@ h2 {
 }
 
 .patient-table th {
-    background: #667eea;
+    background: var(--upmc-disco-dark);
     color: white;
     padding: 12px;
     text-align: left;
@@ -374,11 +396,11 @@ h2 {
 }
 
 .close:hover {
-    color: #2d3748;
+    color: var(--upmc-disco-dark);
 }
 
 .patient-name-link {
-    color: #667eea;
+    color: var(--upmc-disco-dark);
     text-decoration: none;
     font-weight: 600;
     border-bottom: 2px solid transparent;
@@ -386,12 +408,12 @@ h2 {
 }
 
 .patient-name-link:hover {
-    color: #5568d3;
-    border-bottom: 2px solid #667eea;
+    color: var(--upmc-disco-light);
+    border-bottom: 2px solid var(--upmc-disco-dark);
 }
 
 .hl7-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -420,15 +442,15 @@ h2 {
 }
 
 .hl7-content h4 {
-    color: #2d3748;
+    color: var(--upmc-emperor);
     margin: 20px 0 10px 0;
     padding-bottom: 10px;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 2px solid var(--upmc-disco-dark);
 }
 
 .hl7-raw {
-    background: #2d3748;
-    color: #48bb78;
+    background: var(--upmc-emperor);
+    color: #90EE90;
     padding: 15px;
     border-radius: 8px;
     overflow-x: auto;
@@ -452,7 +474,7 @@ h2 {
 }
 
 .hl7-segment-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-card);
     color: white;
     padding: 10px 15px;
     border-radius: 6px;
@@ -480,13 +502,13 @@ h2 {
 
 .hl7-label {
     font-weight: 600;
-    color: #4a5568;
+    color: var(--upmc-emperor);
     width: 200px;
     vertical-align: top;
 }
 
 .hl7-table td:last-child {
-    color: #2d3748;
+    color: var(--upmc-emperor);
 }
 
 .alert {
@@ -522,7 +544,7 @@ h2 {
 }
 
 .match-breakdown h4 {
-    color: #2d3748;
+    color: var(--upmc-emperor);
     margin-bottom: 15px;
     font-size: 1.1em;
 }
@@ -537,7 +559,7 @@ h2 {
 }
 
 .breakdown-table thead {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-card);
     color: white;
 }
 
@@ -566,7 +588,7 @@ h2 {
 
 .contribution {
     font-weight: 600;
-    color: #667eea;
+    color: var(--upmc-disco-dark);
 }
 
 .status-cell {
@@ -574,15 +596,15 @@ h2 {
 }
 
 .status-cell:contains("✓") {
-    color: #48bb78;
+    color: var(--upmc-disco-dark);
 }
 
 .status-cell:contains("✗") {
-    color: #f56565;
+    color: var(--upmc-disco-dark);
 }
 
 .status-cell:contains("~") {
-    color: #ed8936;
+    color: var(--upmc-emperor);
 }
 
 .phonetic-cell {
@@ -597,11 +619,11 @@ h2 {
 .phonetic-detail td {
     padding: 8px 12px;
     font-style: italic;
-    color: #4a5568;
+    color: var(--upmc-emperor);
 }
 
 .breakdown-table strong {
-    color: #2d3748;
+    color: var(--upmc-emperor);
 }
 
 @media (max-width: 768px) {
@@ -644,7 +666,7 @@ h2 {
 
 .stat-card.clickable:hover {
     transform: translateY(-8px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    box-shadow: var(--shadow-disco-hover);
 }
 
 /* Modal large size */
@@ -670,8 +692,8 @@ h2 {
 }
 
 .merged-patient-card:hover {
-    border-color: #667eea;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    border-color: var(--upmc-disco-dark);
+    box-shadow: 0 4px 12px rgba(119, 27, 97, 0.2);
 }
 
 .merged-patient-header {
@@ -680,17 +702,17 @@ h2 {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 2px solid var(--upmc-disco-dark);
 }
 
 .merged-patient-header h3 {
-    color: #2d3748;
+    color: var(--upmc-emperor);
     margin: 0;
     font-size: 1.3em;
 }
 
 .merged-badge {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-card);
     color: white;
     padding: 6px 15px;
     border-radius: 20px;
@@ -712,7 +734,7 @@ h2 {
 }
 
 .detail-section h4 {
-    color: #2d3748;
+    color: var(--upmc-disco-dark);
     margin: 0 0 15px 0;
     font-size: 1.1em;
     display: flex;
@@ -745,14 +767,14 @@ h2 {
 }
 
 .detail-value {
-    color: #2d3748;
+    color: var(--upmc-emperor);
     font-size: 1em;
     font-weight: 500;
 }
 
 .merged-into-section {
-    background: linear-gradient(135deg, #e6f7ff 0%, #f0e6ff 100%);
-    border: 2px solid #667eea;
+    background: linear-gradient(135deg, #FFF5FB 0%, #F5E6F0 100%);
+    border: 2px solid var(--upmc-disco-dark);
 }
 
 .merged-into-info {
@@ -763,10 +785,11 @@ h2 {
 
 .merged-into-info p {
     margin: 0;
-    color: #2d3748;
+    color: var(--upmc-emperor);
     font-size: 0.95em;
 }
 
 .merged-into-info strong {
-    color: #667eea;
+    color: var(--upmc-disco-dark);
 }
+
